@@ -1,14 +1,16 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../app/store";
 
 const Navbar = () => {
   return (
     <div>
-      <h1>FS-App-Template</h1>
+      <h1>
+        <img src="./punchline.png" alt="microphone icon" />
+        Punchline
+      </h1>
       <nav>
-        <div>{/* The navbar will show these links before you log in */}</div>
+        <Link>All Open Mics</Link>
+        <Link>Submit an Open Mic</Link>
       </nav>
       <hr />
     </div>

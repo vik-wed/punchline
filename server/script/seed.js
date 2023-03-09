@@ -1,6 +1,6 @@
 "use strict";
 
-const { db } = require("../server/db");
+const { db } = require("../db");
 const openMicSeed = require("./eventData");
 
 /**

@@ -1,6 +1,6 @@
 const {
   models: { OpenMic },
-} = require("../server/db");
+} = require("../db");
 
 const openMicSeed = async () => {
   await OpenMic.create({
