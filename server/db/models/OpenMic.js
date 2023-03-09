@@ -16,19 +16,10 @@ const OpenMic = db.define("openmic", {
     type: Sequelize.STRING,
   },
   location: {
-    type: Sequelize.TEXT,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+    type: Sequelize.STRING,
   },
   date: {
     type: Sequelize.DATEONLY,
-    validate: {
-      isDate: true,
-      isAfter: "2023-01-01",
-      isBefore: "2024-01-01", // only specifying for the time being
-    },
   },
   time: {
     type: Sequelize.TIME,
@@ -42,7 +33,8 @@ const OpenMic = db.define("openmic", {
       "Friday",
       "Saturday",
       "Sunday",
-      "varies"
+      "varies",
+      "null"
     ),
   },
   price: {
