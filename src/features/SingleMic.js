@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import EditMic from "./EditMic";
 import { Loader } from "@googlemaps/js-api-loader";
 
 /**
@@ -28,7 +26,7 @@ const SingleMic = () => {
   } = singleMic;
 
   const loader = new Loader({
-    apiKey: "AIzaSyAsXv0W5rjhXfN9FNP_MyvjuPtURDDLE1k",
+    apiKey: process.env.REACT_APP_GMAPS_API,
     version: "weekly",
     libraries: ["maps", "places"],
   });
