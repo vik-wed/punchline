@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 /**
  * COMPONENT
  */
-const EditMic = ({ id }) => {
+const EditMic = () => {
   const [description, setDescription] = useState("");
   const [venue, setVenue] = useState("");
-  const [location, setLocation] = useState("");
-  const [date, setDate] = useState(null);
-  const [time, setTime] = useState(null);
-  const [weekday, setWeekday] = useState(null);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [weekday, setWeekday] = useState("");
   const [price, setPrice] = useState("");
   const [signup, setSignup] = useState("");
   const [setTiming, setSetTiming] = useState(0);
@@ -19,15 +18,56 @@ const EditMic = ({ id }) => {
   const [recurring, setRecurring] = useState("");
   const [categories, setCategories] = useState("");
 
+  useEffect(() => {
+    const getSingleMic = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:8080/api/mics/${id}`
+        );
+        setSingleMic(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getSingleMic();
+  }, []);
+
+  const [singleMic, setSingleMic] = useState({});
+
+  useEffect(() => {
+    setDescription(singleMic.description);
+    setVenue(singleMic.venue);
+    setDate(singleMic.date);
+    setTime(singleMic.time);
+    setWeekday(singleMic.weekday);
+    setPrice(singleMic.price);
+    setSignup(singleMic.signup);
+    setSetTiming(singleMic.setTime);
+    setSocial(singleMic.social);
+    setRecurring(singleMic.recurring);
+    setCategories(singleMic.categories);
+  }, [singleMic]);
+
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const submitEditMicHandler = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.put(`http://localhost:8080/api/mics/${id}`, {
+      await axios.put(`http://localhost:8080/api/mics/${id}`, {
         description,
+        venue,
+        date,
+        time,
+        weekday,
+        price,
+        signup,
+        setTime: setTiming,
+        social,
+        recurring,
+        categories,
       });
-      navigate("/");
+      navigate(`/${id}`);
     } catch (err) {
       console.error(err);
     }
@@ -36,54 +76,46 @@ const EditMic = ({ id }) => {
   return (
     <div>
       <h2>Edit Mic</h2>
+      <h3>{singleMic.name}</h3>
       <form className="form" onSubmit={submitEditMicHandler}>
-        <label htmlFor="name">Mic Name:</label>
-        <input
-          name="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
         <label htmlFor="description">Description:</label>
-        <textarea
-          className="longer-input"
+        <input
           name="signup"
-          rows="5"
-          cols="25"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label htmlFor="venue">Venue:</label>
+        <label htmlFor="venue">
+          Venue:<span>*</span>
+        </label>
         <input
+          required
           name="venue"
           type="text"
           value={venue}
           onChange={(e) => setVenue(e.target.value)}
         />
-        <label htmlFor="location">Location:</label>
+        <label htmlFor="date">
+          Next Date: <span>*</span>
+        </label>
         <input
-          name="location"
-          type="text" // see if there is a different type
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <label htmlFor="date">Next Date:</label>
-        <input
+          required
           name="date"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        <label htmlFor="time">Time:</label>
+        <label htmlFor="time">
+          Time:<span>*</span>
+        </label>
         <input
+          required
           name="time"
           type="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
         />
         <label htmlFor="weekday">Weekday:</label>
-        <select onChange={(e) => setWeekday(e.target.value)}>
+        <select value={weekday} onChange={(e) => setWeekday(e.target.value)}>
           <option value="null"> </option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -102,7 +134,7 @@ const EditMic = ({ id }) => {
           onChange={(e) => setPrice(e.target.value)}
         />
         <label htmlFor="signup">Signup Info:</label>
-        <textarea
+        <input
           className="longer-input"
           name="signup"
           rows="5"
@@ -117,8 +149,11 @@ const EditMic = ({ id }) => {
           value={setTiming}
           onChange={(e) => setSetTiming(e.target.value)}
         />
-        <label htmlFor="social">Instagram URL:</label>
+        <label htmlFor="social">
+          Instagram URL:<span>*</span>
+        </label>
         <input
+          required
           name="social"
           type="text"
           value={social}
@@ -134,18 +169,15 @@ const EditMic = ({ id }) => {
           onChange={(e) => setRecurring(e.target.value)}
         />
         <label htmlFor="categories">Categories (separate by comma):</label>
-        <textarea
-          className="longer-input"
+        <input
           name="categories"
-          rows="5"
-          cols="25"
           value={categories}
           onChange={(e) => setCategories(e.target.value)}
         />
         <button className="submit-button" type="submit">
           Submit
         </button>
-        <Link className="cancel-link" to="/">
+        <Link className="cancel-link" to="/mics">
           Cancel
         </Link>
       </form>

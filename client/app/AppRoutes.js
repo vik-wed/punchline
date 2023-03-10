@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AllMics from "../features/AllMics";
 import SingleMic from "../features/SingleMic";
 import AddMic from "../features/AddMic";
 import EditMic from "../features/EditMic";
+import NotFound from "../features/NotFound";
 
 /**
  * COMPONENT
@@ -15,8 +15,12 @@ const AppRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<AllMics />} />
-        <Route path="/add" element={<AddMic />} />
-        <Route path="/:id/*" element={<SingleMic />} />
+        <Route exact path="/mics" element={<AllMics />} />
+        <Route exact path="/mics/add" element={<AddMic />} />
+
+        <Route exact path="/mics/:id" element={<SingleMic />} />
+        <Route exact path="/mics/:id/edit" element={<EditMic />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

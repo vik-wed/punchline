@@ -9,7 +9,6 @@ const AddMic = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [venue, setVenue] = useState("");
-  const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [weekday, setWeekday] = useState("");
@@ -29,7 +28,6 @@ const AddMic = () => {
         name,
         description,
         venue,
-        location,
         date,
         time,
         weekday,
@@ -50,7 +48,9 @@ const AddMic = () => {
     <div>
       <h2>Submit a Mic</h2>
       <form className="form" onSubmit={submitAddMicHandler}>
-        <label htmlFor="name">Mic Name:</label>
+        <label htmlFor="name">
+          Mic Name:<span>*</span>
+        </label>
         <input
           name="name"
           type="text"
@@ -67,30 +67,32 @@ const AddMic = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label htmlFor="venue">Venue:</label>
+        <label htmlFor="venue">
+          Venue:<span>*</span>
+        </label>
         <input
+          required
           name="venue"
           type="text"
           value={venue}
           onChange={(e) => setVenue(e.target.value)}
         />
-        <label htmlFor="location">Location:</label>
-        <input
-          name="location"
-          type="text" // see if there is a different type
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <label htmlFor="date">Next Date:</label>
+        <label htmlFor="date">
+          Next Date:<span>*</span>
+        </label>
         <input
           name="date"
+          required
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        <label htmlFor="time">Time:</label>
+        <label htmlFor="time">
+          Time:<span>*</span>
+        </label>
         <input
           name="time"
+          required
           type="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
@@ -130,8 +132,11 @@ const AddMic = () => {
           value={setTiming}
           onChange={(e) => setSetTiming(e.target.value)}
         />
-        <label htmlFor="social">Instagram URL:</label>
+        <label htmlFor="social">
+          Instagram URL:<span>*</span>
+        </label>
         <input
+          required
           name="social"
           type="text"
           value={social}
@@ -158,7 +163,7 @@ const AddMic = () => {
         <button className="submit-button" type="submit">
           Submit
         </button>
-        <Link className="cancel-link" to="/">
+        <Link className="cancel-link" to="/mics">
           Cancel
         </Link>
       </form>

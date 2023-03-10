@@ -9,8 +9,8 @@ const Navbar = () => {
         Punchline
       </h1>
       <nav>
-        <Link to="/">All Open Mics</Link>
-        <Link to="/add">Submit an Open Mic</Link>
+        <Link to="/mics">All Open Mics</Link>
+        <Link to="/mics/add">Submit an Open Mic</Link>
       </nav>
       <hr />
     </div>

@@ -15,9 +15,6 @@ const OpenMic = db.define("openmic", {
   venue: {
     type: Sequelize.STRING,
   },
-  location: {
-    type: Sequelize.STRING,
-  },
   date: {
     type: Sequelize.DATEONLY,
   },

@@ -12,6 +12,21 @@ const SingleMic = () => {
   const [singleMic, setSingleMic] = useState({});
   const { id } = useParams();
 
+  const {
+    name,
+    description,
+    venue,
+    date,
+    time,
+    weekday,
+    price,
+    signup,
+    setTime,
+    social,
+    recurring,
+    categories,
+  } = singleMic;
+
   const loader = new Loader({
     apiKey: "AIzaSyAsXv0W5rjhXfN9FNP_MyvjuPtURDDLE1k",
     version: "weekly",
@@ -27,7 +42,7 @@ const SingleMic = () => {
       zoom: 20,
     });
     const request = {
-      query: `${singleMic.venue}`,
+      query: `${venue}`,
       fields: ["name", "geometry", "formatted_address", "rating"],
       locationBias: {
         lat: 40.7128,
@@ -46,13 +61,12 @@ const SingleMic = () => {
     });
     function createMarker(place) {
       if (!place.geometry || !place.geometry.location) return;
-      console.log(place);
       const marker = new google.maps.Marker({
         map,
         position: place.geometry.location,
       });
       const contentString =
-        '<div id="content">' +
+        "<div>" +
         `<h3>${place.name}</h1>` +
         `<p><strong>Address:</strong> ${place.formatted_address}</p>` +
         `<p><strong>Rating:</strong> ${place.rating}</p>` +
@@ -83,21 +97,28 @@ const SingleMic = () => {
     getSingleMic();
   }, [id]);
 
+  const currentDate = new Date();
+  const eventDate = new Date(date);
+
   return (
     <div>
-      <h2>{singleMic.name}</h2>
-      <p>Blurb: {singleMic.description}</p>
-      <p>Venue: {singleMic.venue}</p>
-
-      <div id="map" style={{ width: "50vw", height: "50vh" }}>
-        this is where the map should show
-      </div>
+      <h2>{name}</h2>
+      <a href={social}>Instagram</a>
       <Link to={`/${id}/edit`}>
         <button>Edit Details</button>
       </Link>
-      <Routes>
-        <Route path="/edit" element={<EditMic id={id} />} />
-      </Routes>
+      {description && <p>Blurb: {description}</p>}
+      {venue && <p>Venue: {venue}</p>}
+      {currentDate < eventDate && <p>Next Date: {date}</p>}
+      {time && <p>Time: {time}</p>}
+      {weekday && <p>Day of the Week: {weekday}</p>}
+      {price && <p>Sign up price/Drink Minimum: {price}</p>}
+      {setTime && <p>Set time: {setTime}</p>}
+      {recurring && <p>Recurring: {recurring}</p>}
+      {categories && <p>{categories}</p>}
+      <div id="map" style={{ width: "50vw", height: "50vh" }}>
+        this is where the map should show
+      </div>
     </div>
   );
 };

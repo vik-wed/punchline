@@ -31,7 +31,7 @@ const AllMics = () => {
                 <div key={mic.id}>
                   <h3>{mic.name}</h3>
                   <a href={mic.social}>Instagram</a>
-                  <Link to={`/${mic.id}`}>
+                  <Link to={`/mics/${mic.id}`}>
                     <button>View Details</button>
                   </Link>
                 </div>
