@@ -6,13 +6,12 @@ import axios from "axios";
  * COMPONENT
  */
 const EditMic = ({ id }) => {
-  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [venue, setVenue] = useState("");
   const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [weekday, setWeekday] = useState("");
+  const [date, setDate] = useState(null);
+  const [time, setTime] = useState(null);
+  const [weekday, setWeekday] = useState(null);
   const [price, setPrice] = useState("");
   const [signup, setSignup] = useState("");
   const [setTiming, setSetTiming] = useState(0);
@@ -26,7 +25,7 @@ const EditMic = ({ id }) => {
     event.preventDefault();
     try {
       const { data } = await axios.put(`http://localhost:8080/api/mics/${id}`, {
-        name,
+        description,
       });
       navigate("/");
     } catch (err) {

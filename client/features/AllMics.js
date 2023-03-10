@@ -28,9 +28,9 @@ const AllMics = () => {
           <div>
             {allMics?.map((mic) => {
               return (
-                <div>
+                <div key={mic.id}>
                   <h3>{mic.name}</h3>
-                  <p>{mic.weekday}</p>
+                  <a href={mic.social}>Instagram</a>
                   <Link to={`/${mic.id}`}>
                     <button>View Details</button>
                   </Link>

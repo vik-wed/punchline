@@ -5,6 +5,7 @@ const Footer = () => {
   return (
     <footer>
       <hr />
+      <p>Community Dashboard for NYC Open Mics</p>
       <Link>Contact Us</Link>
     </footer>
   );

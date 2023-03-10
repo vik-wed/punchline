@@ -13,6 +13,9 @@
   "author": "Vik Wedel",
   "license": "MIT",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.15.1",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@react-google-maps/api": "^2.18.1",
     "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
     "express": "^4.18.2",
