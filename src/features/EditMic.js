@@ -80,6 +80,7 @@ const EditMic = () => {
       <form className="form" onSubmit={submitEditMicHandler}>
         <label htmlFor="description">Description:</label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="signup"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -88,6 +89,7 @@ const EditMic = () => {
           Venue:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           required
           name="venue"
           type="text"
@@ -98,6 +100,7 @@ const EditMic = () => {
           Next Date: <span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           required
           name="date"
           type="date"
@@ -108,6 +111,7 @@ const EditMic = () => {
           Time:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           required
           name="time"
           type="time"
@@ -115,7 +119,11 @@ const EditMic = () => {
           onChange={(e) => setTime(e.target.value)}
         />
         <label htmlFor="weekday">Weekday:</label>
-        <select value={weekday} onChange={(e) => setWeekday(e.target.value)}>
+        <select
+          value={weekday}
+          className="select select-primary w-full max-w-xs"
+          onChange={(e) => setWeekday(e.target.value)}
+        >
           <option value="null"> </option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -128,6 +136,7 @@ const EditMic = () => {
         </select>
         <label htmlFor="price">Entry fee/Drink Minimum etc:</label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="price"
           type="text"
           value={price}
@@ -135,7 +144,7 @@ const EditMic = () => {
         />
         <label htmlFor="signup">Signup Info:</label>
         <input
-          className="longer-input"
+          className="input input-bordered input-primary w-full max-w-xs"
           name="signup"
           rows="5"
           cols="25"
@@ -144,6 +153,7 @@ const EditMic = () => {
         />
         <label htmlFor="setTime">Minutes per Set:</label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="setTime"
           type="number"
           value={setTiming}
@@ -153,6 +163,7 @@ const EditMic = () => {
           Instagram URL:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           required
           name="social"
           type="text"
@@ -163,6 +174,7 @@ const EditMic = () => {
           Is the Mic recurring (e.g. weekly, monthly, biweekly):
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="recurring"
           type="text"
           value={recurring}
@@ -170,14 +182,18 @@ const EditMic = () => {
         />
         <label htmlFor="categories">Categories (separate by comma):</label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="categories"
           value={categories}
           onChange={(e) => setCategories(e.target.value)}
         />
-        <button className="submit-button" type="submit">
+        <button
+          className="btn btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg  "
+          type="submit"
+        >
           Submit
         </button>
-        <Link className="cancel-link" to="/mics">
+        <Link className="link link-accent" to="/mics">
           Cancel
         </Link>
       </form>

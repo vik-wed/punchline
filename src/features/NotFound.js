@@ -8,7 +8,9 @@ const NotFound = () => {
   return (
     <div>
       <h2>OOOPSIES SOMETHING WENT WRONG</h2>
-      <Link to="/mics">Go Home</Link>
+      <Link className="link link-accent" to="/mics">
+        Go Home
+      </Link>
     </div>
   );
 };

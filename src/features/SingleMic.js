@@ -102,8 +102,10 @@ const SingleMic = () => {
     <div>
       <h2>{name}</h2>
       <a href={social}>Instagram</a>
-      <Link to={`/${id}/edit`}>
-        <button>Edit Details</button>
+      <Link to={`/mics/${id}/edit`}>
+        <button className="btn btn-outline btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg  ">
+          Edit Details
+        </button>
       </Link>
       {description && <p>Blurb: {description}</p>}
       {venue && <p>Venue: {venue}</p>}

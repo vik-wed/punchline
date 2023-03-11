@@ -52,6 +52,7 @@ const AddMic = () => {
           Mic Name:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="name"
           type="text"
           value={name}
@@ -60,7 +61,7 @@ const AddMic = () => {
         />
         <label htmlFor="description">Description:</label>
         <textarea
-          className="longer-input"
+          className="textarea textarea-primary"
           name="signup"
           rows="5"
           cols="25"
@@ -71,6 +72,7 @@ const AddMic = () => {
           Venue:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           required
           name="venue"
           type="text"
@@ -81,6 +83,7 @@ const AddMic = () => {
           Next Date:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="date"
           required
           type="date"
@@ -91,6 +94,7 @@ const AddMic = () => {
           Time:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="time"
           required
           type="time"
@@ -98,7 +102,10 @@ const AddMic = () => {
           onChange={(e) => setTime(e.target.value)}
         />
         <label htmlFor="weekday">Weekday:</label>
-        <select onChange={(e) => setWeekday(e.target.value)}>
+        <select
+          className="select select-primary w-full max-w-xs"
+          onChange={(e) => setWeekday(e.target.value)}
+        >
           <option value="null"> </option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -111,6 +118,7 @@ const AddMic = () => {
         </select>
         <label htmlFor="price">Entry fee/Drink Minimum etc:</label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="price"
           type="text"
           value={price}
@@ -118,7 +126,7 @@ const AddMic = () => {
         />
         <label htmlFor="signup">Signup Info:</label>
         <textarea
-          className="longer-input"
+          className="textarea textarea-primary"
           name="signup"
           rows="5"
           cols="25"
@@ -127,6 +135,7 @@ const AddMic = () => {
         />
         <label htmlFor="setTime">Minutes per Set:</label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="setTime"
           type="number"
           value={setTiming}
@@ -136,6 +145,7 @@ const AddMic = () => {
           Instagram URL:<span>*</span>
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           required
           name="social"
           type="text"
@@ -146,6 +156,7 @@ const AddMic = () => {
           Is the Mic recurring (e.g. weekly, monthly, biweekly):
         </label>
         <input
+          className="input input-bordered input-primary w-full max-w-xs"
           name="recurring"
           type="text"
           value={recurring}
@@ -153,17 +164,20 @@ const AddMic = () => {
         />
         <label htmlFor="categories">Categories (separate by comma):</label>
         <textarea
-          className="longer-input"
+          className="textarea textarea-primary"
           name="categories"
           rows="5"
           cols="25"
           value={categories}
           onChange={(e) => setCategories(e.target.value)}
         />
-        <button className="submit-button" type="submit">
+        <button
+          className="btn btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg  "
+          type="submit"
+        >
           Submit
         </button>
-        <Link className="cancel-link" to="/mics">
+        <Link className="link link-accent" to="/mics">
           Cancel
         </Link>
       </form>
