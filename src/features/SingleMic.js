@@ -99,27 +99,66 @@ const SingleMic = () => {
   const eventDate = new Date(date);
 
   return (
-    <div>
-      <h2>{name}</h2>
-      <a href={social}>Instagram</a>
-      <Link to={`/mics/${id}/edit`}>
-        <button className="btn btn-outline btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg  ">
-          Edit Details
-        </button>
-      </Link>
-      {description && <p>Blurb: {description}</p>}
-      {venue && <p>Venue: {venue}</p>}
-      {currentDate < eventDate && <p>Next Date: {date}</p>}
-      {time && <p>Time: {time}</p>}
-      {weekday && <p>Day of the Week: {weekday}</p>}
-      {price && <p>Sign up price/Drink Minimum: {price}</p>}
-      {setTime && <p>Set time: {setTime}</p>}
-      {recurring && <p>Recurring: {recurring}</p>}
-      {categories && <p>{categories}</p>}
-      <div id="map" style={{ width: "50vw", height: "50vh" }}>
+    <main className="container m-5 mx-auto flex gap-3 ">
+      <div className="flex flex-col justify-evenly gap-3 m-5">
+        <h1 className="text-2xl font-bold text-secondary">{name}</h1>
+        <a href={social} target="_blank" className="link link-primary">
+          Instagram
+        </a>
+
+        {description && (
+          <p>
+            <span className="font-semibold">Blurb:</span> {description}
+          </p>
+        )}
+        {venue && (
+          <p>
+            <span className="font-semibold">Venue:</span> {venue}
+          </p>
+        )}
+        {currentDate < eventDate && (
+          <p>
+            <span className="font-semibold">Next Date:</span> {date}
+          </p>
+        )}
+        {time && (
+          <p>
+            <span className="font-semibold">Time:</span> {time}
+          </p>
+        )}
+        {weekday && (
+          <p>
+            <span className="font-semibold">Day of the Week:</span> {weekday}
+          </p>
+        )}
+        {price && (
+          <p>
+            <span className="font-semibold">Sign up price/Drink Minimum:</span>{" "}
+            {price}
+          </p>
+        )}
+        {setTime && (
+          <p>
+            <span className="font-semibold">Set time:</span> {setTime}
+          </p>
+        )}
+        {recurring && (
+          <p>
+            <span className="font-semibold">Recurring:</span>
+            {recurring}
+          </p>
+        )}
+        {categories && <p>{categories}</p>}
+        <Link to={`/mics/${id}/edit`}>
+          <button className="btn btn-outline btn-secondary  ">
+            Edit Details
+          </button>
+        </Link>
+      </div>
+      <div id="map" className="min-h-[80vh] min-w-[30vw]">
         this is where the map should show
       </div>
-    </div>
+    </main>
   );
 };
 

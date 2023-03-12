@@ -21,17 +21,19 @@ const AllMics = () => {
   }, []);
 
   const handleReset = async () => {
+    document.getElementById("filter-weekdays").reset();
     const { data } = await axios.get("http://localhost:8080/api/mics");
     setAllMics(data);
   };
 
-  const handleWeekdaySubmit = (evt) => {
+  const handleWeekdaySubmit = async (evt) => {
     evt.preventDefault();
     let results = evt.target;
     const newArr = [];
     for (const result of results) {
       if (result.checked) {
-        allMics.filter((mic) => {
+        const { data } = await axios.get("http://localhost:8080/api/mics");
+        data?.filter((mic) => {
           if (mic.weekday === result.value) {
             newArr.push(mic);
           }
@@ -42,107 +44,135 @@ const AllMics = () => {
   };
 
   return (
-    <div>
+    <main className="container m-5 mx-auto flex flex-col">
       <div className="form-control">
-        <form onSubmit={handleWeekdaySubmit}>
-          <h3>Day of the Week</h3>
-          <label className="label cursor-pointer">
+        <form
+          id="filter-weekdays"
+          className="flex flex-wrap mx-auto justify-evenly max-w-lg gap-2"
+          onSubmit={handleWeekdaySubmit}
+        >
+          <h2 className="text-xl font-bold text-center basis-full">
+            Filter by Day of the Week
+          </h2>
+          <label
+            className="label cursor-pointer gap-x-4
+          "
+          >
+            <span className="label-text">Monday</span>
             <input
               className="checkbox"
               type="checkbox"
               name="weekday"
               value="Monday"
             />
-            <span className="label-text">Monday</span>
           </label>
-          <label className="label cursor-pointer">
+          <label className="label cursor-pointer gap-x-4">
+            <span className="label-text">Tuesday</span>
             <input
               className="checkbox"
               type="checkbox"
               name="weekday"
               value="Tuesday"
             />
-            <span className="label-text">Tuesday</span>
           </label>
-          <label className="label cursor-pointer">
+          <label className="label cursor-pointer gap-x-4">
+            <span className="label-text">Wednesday</span>
             <input
               className="checkbox"
               type="checkbox"
               name="weekday"
               value="Wednesday"
             />
-            <span className="label-text">Wednesday</span>
           </label>
-          <label className="label cursor-pointer">
+          <label className="label cursor-pointer gap-x-4">
+            <span
+              className="label-text
+            "
+            >
+              Thursday
+            </span>
             <input
               className="checkbox"
               type="checkbox"
               name="weekday"
               value="Thursday"
             />
-            <span className="label-text">Thursday</span>
           </label>
-          <label className="label cursor-pointer">
+          <label
+            className="label cursor-pointer gap-x-4
+          "
+          >
+            <span className="label-text">Friday</span>
             <input
               className="checkbox"
               type="checkbox"
               name="weekday"
               value="Friday"
             />
-            <span className="label-text">Friday</span>
           </label>
-          <label className="label cursor-pointer">
+          <label
+            className="label cursor-pointer gap-x-4
+          "
+          >
+            <span className="label-text">Saturday</span>
             <input
               className="checkbox"
               type="checkbox"
               name="weekday"
               value="Saturday"
             />
-            <span className="label-text">Saturday</span>
           </label>
-          <label className="label cursor-pointer">
+          <label
+            className="label cursor-pointer gap-x-4
+          "
+          >
+            <span className="label-text">Sunday</span>
             <input
               className="checkbox"
               type="checkbox"
               name="weekday"
               value="Sunday"
             />
-            <span className="label-text">Sunday</span>
           </label>
-          <button
-            className="btn btn-outline btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg  "
-            type="submit"
-          >
-            {" "}
-            Filter
-          </button>
+          <div className="flex basis-full justify-center gap-x-4">
+            <button className="btn btn-secondary  " type="submit">
+              {" "}
+              Filter
+            </button>
+            <button
+              className="btn btn-outline btn-accent "
+              onClick={handleReset}
+            >
+              Reset
+            </button>
+          </div>
         </form>
-        <button
-          className="btn btn-outline btn-accent btn-xs sm:btn-sm md:btn-md lg:btn-lg  "
-          onClick={handleReset}
-        >
-          Reset
-        </button>
       </div>
 
       {allMics && allMics.length ? (
-        <div>
-          <h2>All Mics</h2>
-          <div>
+        <div className="my-5 mx-auto flex flex-wrap gap-2 ">
+          <h1 className="text-2xl text-center font-bold text-secondary basis-full">
+            All Mics
+          </h1>
+          <div className="flex flex-wrap gap-3 justify-between md:justify-center">
             {allMics?.map((mic) => {
               return (
                 <div
-                  className="card w-96 bg-primary text-primary-content "
+                  className="card min-w-[32%] mx-auto bg-primary text-primary-content"
                   key={mic.id}
                 >
-                  <div className="card-body">
+                  <div className="card-body flex flex-wrap">
                     <h2 className="card-title">{mic.name}</h2>
-                    <a href={mic.social}>Instagram</a>
+                    <a
+                      className="link link-neutral"
+                      href={mic.social}
+                      target="_blank"
+                    >
+                      Instagram
+                    </a>
                     <div className="card-actions justify-end">
-                      <Link to={`/mics/${mic.id}`}>
-                        <button className="btn  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg">
-                          View Details
-                        </button>
+                      <Link className="link" to={`/mics/${mic.id}`}>
+                        View Details
                       </Link>
                     </div>
                   </div>
@@ -152,9 +182,11 @@ const AllMics = () => {
           </div>
         </div>
       ) : (
-        <h2>Mics are Loading</h2>
+        <h1 className="text-2xl text-center font-bold text-accent">
+          Something went wrong
+        </h1>
       )}
-    </div>
+    </main>
   );
 };
 

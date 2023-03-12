@@ -74,44 +74,49 @@ const EditMic = () => {
   };
 
   return (
-    <div>
-      <h2>Edit Mic</h2>
-      <h3>{singleMic.name}</h3>
-      <form className="form" onSubmit={submitEditMicHandler}>
+    <main className="container my-5 mx-auto max-w-xs flex flex-col gap-2 ">
+      <h1 className="text-2xl text-center font-bold text-secondary">
+        Edit Mic
+      </h1>
+      <h3 className="text-xl font-bold">{singleMic.name}</h3>
+      <form
+        className="form flex flex-col gap-2"
+        onSubmit={submitEditMicHandler}
+      >
         <label htmlFor="description">Description:</label>
-        <input
-          className="input input-bordered input-primary w-full max-w-xs"
+        <textarea
+          className="textarea textarea-bordered"
           name="signup"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label htmlFor="venue">
-          Venue:<span>*</span>
+        <label className="flex justify-between" htmlFor="venue">
+          Venue:<span className="font-semibold text-accent">required</span>
         </label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered input-accent w-full max-w-xs"
           required
           name="venue"
           type="text"
           value={venue}
           onChange={(e) => setVenue(e.target.value)}
         />
-        <label htmlFor="date">
-          Next Date: <span>*</span>
+        <label className="flex justify-between" htmlFor="date">
+          Next Date:<span className="font-semibold text-accent">required</span>
         </label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered input-accent w-full max-w-xs"
           required
           name="date"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        <label htmlFor="time">
-          Time:<span>*</span>
+        <label className="flex justify-between" htmlFor="time">
+          Time:<span className="font-semibold text-accent">required</span>
         </label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered input-accent w-full max-w-xs"
           required
           name="time"
           type="time"
@@ -121,7 +126,7 @@ const EditMic = () => {
         <label htmlFor="weekday">Weekday:</label>
         <select
           value={weekday}
-          className="select select-primary w-full max-w-xs"
+          className="select select-bordered w-full max-w-xs"
           onChange={(e) => setWeekday(e.target.value)}
         >
           <option value="null"> </option>
@@ -134,17 +139,21 @@ const EditMic = () => {
           <option value="Sunday">Sunday</option>
           <option value="varies">Multiple Days</option>
         </select>
-        <label htmlFor="price">Entry fee/Drink Minimum etc:</label>
+        <label className="flex justify-between" htmlFor="price">
+          Entry fee/Drink Minimum etc:
+          <span className="font-semibold text-accent">required</span>
+        </label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered input-accent w-full max-w-xs"
           name="price"
+          required
           type="text"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
         <label htmlFor="signup">Signup Info:</label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered w-full max-w-xs"
           name="signup"
           rows="5"
           cols="25"
@@ -153,17 +162,18 @@ const EditMic = () => {
         />
         <label htmlFor="setTime">Minutes per Set:</label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered w-full max-w-xs"
           name="setTime"
           type="number"
           value={setTiming}
           onChange={(e) => setSetTiming(e.target.value)}
         />
-        <label htmlFor="social">
-          Instagram URL:<span>*</span>
+        <label className="flex justify-between" htmlFor="social">
+          Instagram URL:
+          <span className="font-semibold text-accent">required</span>
         </label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered input-accent w-full max-w-xs"
           required
           name="social"
           type="text"
@@ -174,7 +184,7 @@ const EditMic = () => {
           Is the Mic recurring (e.g. weekly, monthly, biweekly):
         </label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered w-full max-w-xs"
           name="recurring"
           type="text"
           value={recurring}
@@ -182,22 +192,24 @@ const EditMic = () => {
         />
         <label htmlFor="categories">Categories (separate by comma):</label>
         <input
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered w-full max-w-xs"
           name="categories"
           value={categories}
           onChange={(e) => setCategories(e.target.value)}
         />
-        <button
-          className="btn btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg  "
-          type="submit"
-        >
-          Submit
-        </button>
-        <Link className="link link-accent" to="/mics">
-          Cancel
-        </Link>
+        <div className="flex flex-row justify-evenly items-center">
+          <button
+            className="btn btn-secondary btn-xs sm:btn-sm md:btn-md lg:btn-lg  "
+            type="submit"
+          >
+            Submit
+          </button>
+          <Link className="link link-accent" to="/mics">
+            Cancel
+          </Link>
+        </div>
       </form>
-    </div>
+    </main>
   );
 };
 
