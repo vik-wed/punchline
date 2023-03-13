@@ -97,7 +97,7 @@ const SingleMic = () => {
   const eventDate = new Date(date);
 
   return (
-    <main className="container m-5 mx-auto flex gap-3 ">
+    <main className="container m-5 mx-auto flex gap-3 justify-between">
       <div className="flex flex-col justify-evenly gap-3 m-5">
         <h1 className="text-2xl font-bold text-secondary">{name}</h1>
         <a href={social} target="_blank" className="link link-primary">

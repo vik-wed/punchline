@@ -57,7 +57,7 @@ const EditMic = () => {
         venue,
         date,
         time,
-        weekday,
+        weekday: String(weekday),
         price,
         signup,
         setTime: setTiming,
@@ -65,7 +65,7 @@ const EditMic = () => {
         recurring,
         categories,
       });
-      navigate(`/${id}`);
+      navigate(`/mics/${id}`);
     } catch (err) {
       console.error(err);
     }
