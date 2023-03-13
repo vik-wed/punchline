@@ -111,6 +111,7 @@ const AddMic = () => {
         <label htmlFor="weekday">Weekday:</label>
         <select
           className="select select-bordered w-full max-w-xs"
+          value={weekday}
           onChange={(e) => setWeekday(e.target.value)}
         >
           <option value="null"> </option>
