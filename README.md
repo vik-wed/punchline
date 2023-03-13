@@ -2,28 +2,28 @@
 
 Full stack application - allowing users to find their next open mic in NYC
 
-## Customize
+## Features
 
-Now that you've got the code, follow these steps to get acclimated:
+- Homepage with all currently available open mics
+  - allows you to filter by day of the week the mic is held
+- single open mic view shows a google map for the location that is interactive
+- Submission and Editing capabilities for open mics
 
-- Update project name and description in `package.json`
+## Technologies Used
+
+- React
+- React Router
+- Express
+- Node
+- Sequelize
+- PostgreSQL
+- Axios
+- Webpack
+- TailwindCSS
+- DaisyUI
+
+## Run it on your local machine
+
 - `npm install`
-- Create two postgres databases (`MY_APP_NAME` should match the `name`
-  parameter in `package.json`):
-- These commands will create both your **development** and **test** databases
-
-```
-createdb <YOUR APP NAME HERE FROM package.json>
-createdb <YOUR APP NAME HERE FROM package.json>-test
-```
-
-- By default, running `npm test` will use your test database, while
-  regular development uses development database
-
-## Start
-
-Sync and seed your database by running `npm run seed`. Running `npm run start:dev` will make great things happen!
-
-- start:dev will both start your server and build your client side files using webpack
-- start:dev:logger is the same as start:dev, but you will see your SQL queries (can be helpful for debugging)
-- start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
+- Create a postgres database (punchline):
+- npm run start to start the server, seed the database and npm run build to start webpack
