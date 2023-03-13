@@ -5,12 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "build:dev": "npm run build -- --watch --mode=development",
     "seed": "node script/seed.js",
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "start": "node server",
-    "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client"
+    "start": "node server"
   },
   "author": "Vik Wedel",
   "license": "MIT",
@@ -22,7 +18,6 @@
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
-    "react-loading": "^2.0.3",
     "sequelize": "^6.25.3"
   },
   "devDependencies": {
@@ -30,7 +25,6 @@
     "@babel/preset-env": "^7.19.4",
     "@babel/preset-react": "^7.18.6",
     "@babel/register": "^7.18.9",
-    "@reduxjs/toolkit": "^1.8.6",
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.14",
     "axios": "^1.1.3",
@@ -45,23 +39,11 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
-    "react-scripts": "^5.0.1",
     "style-loader": "^3.3.1",
     "supertest": "^6.3.0",
     "tailwindcss": "^3.0.23",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
-}
+  }
+
