@@ -3,7 +3,6 @@ import React from "react";
 import Navbar from "../features/Navbar";
 import AppRoutes from "./AppRoutes";
 import Footer from "../features/Footer";
-import "../style.css";
 
 const App = () => {
   return (
