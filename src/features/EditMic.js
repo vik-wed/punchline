@@ -21,9 +21,7 @@ const EditMic = () => {
   useEffect(() => {
     const getSingleMic = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:8080/api/mics/${id}`
-        );
+        const { data } = await axios.get(`/api/mics/${id}`);
         setSingleMic(data);
       } catch (err) {
         console.error(err);
@@ -54,7 +52,7 @@ const EditMic = () => {
   const submitEditMicHandler = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/mics/${id}`, {
+      await axios.put(`/api/mics/${id}`, {
         description,
         venue,
         date,

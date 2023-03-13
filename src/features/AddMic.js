@@ -24,7 +24,7 @@ const AddMic = () => {
   const submitAddMicHandler = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:8080/api/mics", {
+      const { data } = await axios.post("/api/mics", {
         name,
         description,
         venue,

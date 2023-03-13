@@ -84,9 +84,7 @@ const SingleMic = () => {
   useEffect(() => {
     const getSingleMic = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:8080/api/mics/${id}`
-        );
+        const { data } = await axios.get(`/api/mics/${id}`);
         setSingleMic(data);
       } catch (err) {
         console.error(err);

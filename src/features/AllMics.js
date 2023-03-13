@@ -11,7 +11,7 @@ const AllMics = () => {
   useEffect(() => {
     const getAllMics = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8080/api/mics");
+        const { data } = await axios.get("/api/mics");
         setAllMics(data);
       } catch (err) {
         console.error(err);
@@ -22,7 +22,7 @@ const AllMics = () => {
 
   const handleReset = async () => {
     document.getElementById("filter-weekdays").reset();
-    const { data } = await axios.get("http://localhost:8080/api/mics");
+    const { data } = await axios.get("/api/mics");
     setAllMics(data);
   };
 
@@ -32,7 +32,7 @@ const AllMics = () => {
     const newArr = [];
     for (const result of results) {
       if (result.checked) {
-        const { data } = await axios.get("http://localhost:8080/api/mics");
+        const { data } = await axios.get("/api/mics");
         data?.filter((mic) => {
           if (mic.weekday === result.value) {
             newArr.push(mic);

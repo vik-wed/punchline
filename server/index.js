@@ -5,6 +5,7 @@ const seed = require("./script/seed");
 
 const init = async () => {
   try {
+    await db.sync({ force: true });
     await seed();
 
     // start listening (and create a 'server' object representing our server)
