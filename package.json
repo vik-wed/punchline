@@ -9,7 +9,7 @@
     "seed": "node script/seed.js",
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
-    "start": "node server && react-scripts start",
+    "start": "node server",
     "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client"
   },
   "author": "Vik Wedel",
